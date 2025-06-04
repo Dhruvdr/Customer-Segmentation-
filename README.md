@@ -15,10 +15,10 @@ This project applies RFM (Recency, Frequency, Monetary) analysis and KMeans clus
 ├── src/ # Python scripts
 ├── output/ # Generated visualizations
 
-##📌 Data Source
+## 📌 Data Source
 UCI Machine Learning Repository - Online Retail Dataset
 
-##📈 Results
+## 📈 Results
 Cluster summary statistics provided in the terminal.
 
 Plots are saved in the output/plots/ directory.
