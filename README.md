@@ -1,2 +1,24 @@
-# Customer-Segmentation-
-This project focuses on customer segmentation using RFM analysis (Recency, Frequency, and Monetary value) combined with KMeans clustering on a real-world e-commerce dataset. The primary goal is to group customers based on purchasing behavior to support targeted marketing strategies, improve customer retention, and maximize lifetime value.
+# Customer Segmentation Project
+
+This project applies RFM (Recency, Frequency, Monetary) analysis and KMeans clustering to segment customers based on their purchasing behavior from an online retail dataset.
+
+## 📊 Techniques Used
+- Data Cleaning & Preprocessing
+- RFM Analysis
+- KMeans Clustering
+- Elbow Method for Optimal Clusters
+- Visualization with Seaborn & Matplotlib
+
+## 📁 Project Structure
+
+├── data/ # Dataset location
+├── src/ # Python scripts
+├── output/ # Generated visualizations
+
+📌 Data Source
+UCI Machine Learning Repository - Online Retail Dataset
+
+📈 Results
+Cluster summary statistics provided in the terminal.
+
+Plots are saved in the output/plots/ directory.
