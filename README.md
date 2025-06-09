@@ -11,8 +11,8 @@ This project applies RFM (Recency, Frequency, Monetary) analysis and KMeans clus
 
 ## 📁 Project Structure
 
-├── data/ # Dataset location
-├── src/ # Python scripts
+├── Customer-Segmentation/ # Dataset location
+├── main.py/ # Python scripts
 ├── output/ # Generated visualizations
 
 ## 📌 Data Source
