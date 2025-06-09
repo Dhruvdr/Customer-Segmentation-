@@ -3,9 +3,9 @@
 This project applies RFM (Recency, Frequency, Monetary) analysis and KMeans clustering to segment customers based on their purchasing behavior from an online retail dataset.
 
 ## 📊 Techniques Used
-- Data Cleaning & Preprocessing
+- Data Cleaning & Preprocessing using Numpy and Pandas
 - RFM Analysis
-- KMeans Clustering
+- KMeans Clustering (scikit-learn)
 - Elbow Method for Optimal Clusters
 - Visualization with Seaborn & Matplotlib
 
@@ -31,4 +31,4 @@ Cluster summary statistics provided in the terminal.
         Cluster 0 : high recency rate but low freq and monetary. contains 2585 customers
         Cluster 1 : low recency rate but high freq and monetary. conatins 1753 customers
 
-Plots are saved in the output.
+Visualization Plots are saved in the Output directory.
