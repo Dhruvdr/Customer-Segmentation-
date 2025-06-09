@@ -20,5 +20,15 @@ UCI Machine Learning Repository - Online Retail Dataset
 
 ## 📈 Results
 Cluster summary statistics provided in the terminal.
+1. Clustering based on RFM analysis. We had 4 clusters/segments of customers
+        A Customers: 1188(less recency but high freq and heacy spendings)
+        B Customers: 1266 (good recency,frequency and monetary)
+        C Customers: 947 (high recency, low frequency and low spending)
+        D Customers: 937 ( very high recency but very less frequency and spendings)
 
-Plots are saved in the output/plots/ directory.
+2. Implementation of M.L. Algorithm to cluster the customers 
+        giving optimal no. of clusters = 2
+        Cluster 0 : high recency rate but low freq and monetary. contains 2585 customers
+        Cluster 1 : low recency rate but high freq and monetary. conatins 1753 customers
+
+Plots are saved in the output.
