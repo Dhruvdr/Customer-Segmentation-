@@ -10,10 +10,11 @@ This project applies RFM (Recency, Frequency, Monetary) analysis and KMeans clus
 - Visualization with Seaborn & Matplotlib
 
 ## 📁 Project Structure
-
+<pre>
 ├── Customer-Segmentation/ # Dataset location
 ├── main.py/ # Python scripts
 ├── output/ # Generated visualizations
+</pre>
 
 ## 📌 Data Source
 UCI Machine Learning Repository - Online Retail Dataset
