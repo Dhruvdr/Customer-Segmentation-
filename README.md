@@ -1,13 +1,96 @@
-# Customer Segmentation Project
+# Customer Segmentation using RFM Analysis & KMeans Clustering
 
-This project applies RFM (Recency, Frequency, Monetary) analysis and KMeans clustering to segment customers based on their purchasing behavior from an online retail dataset.
+## 📌 Project Overview
+This project performs **customer segmentation** using **RFM (Recency, Frequency, Monetary) analysis** and **KMeans clustering** on an online retail dataset.  
+The goal is to identify distinct customer groups based on purchasing behavior and derive actionable business insights.
 
-## 📊 Techniques Used
-- Data Cleaning & Preprocessing using Numpy and Pandas
-- RFM Analysis
-- KMeans Clustering (scikit-learn)
-- Elbow Method for Optimal Clusters
-- Visualization with Seaborn & Matplotlib
+---
+
+## 📊 Dataset
+- **Source**: UCI Machine Learning Repository  
+- **Name**: Online Retail Dataset  
+- **Description**: Transactional data from an online retail store including invoice details, product information, customer IDs, and purchase amounts.
+
+---
+
+## 🔍 Methodology
+
+### 1. Data Cleaning & Preprocessing
+- Removed cancelled invoices and invalid transactions  
+- Dropped rows with missing customer identifiers  
+- Filtered negative and zero price values  
+- Converted date columns to datetime format  
+- Engineered additional time-based features
+
+---
+
+### 2. Exploratory Data Analysis (EDA)
+- Identified top-selling products and customers  
+- Analyzed sales trends by country, month, weekday, and time of day  
+- Observed strong seasonality and customer concentration patterns
+
+---
+
+### 3. RFM Analysis
+- **Recency**: Days since last purchase  
+- **Frequency**: Number of unique transactions  
+- **Monetary**: Total amount spent  
+
+Customers were scored using quantiles and grouped into **four loyalty segments (A–D)**.
+
+#### RFM Segments:
+- **A**: Low recency, high frequency & high spending  
+- **B**: Good recency, frequency & monetary value  
+- **C**: High recency, low frequency & low spending  
+- **D**: Very high recency with minimal engagement  
+
+---
+
+### 4. KMeans Clustering
+- Applied **log transformation** to handle skewed distributions  
+- Standardized features using `StandardScaler`  
+- Evaluated multiple feature combinations:
+  - Recency & Monetary  
+  - Frequency & Monetary  
+  - Recency, Frequency & Monetary  
+
+#### Model Selection:
+- Used the **Elbow Method (WCSS)** and **Silhouette Score**
+- Optimal number of clusters: **2**
+
+---
+
+## 📈 Results
+
+### RFM-Based Segmentation
+- **4 customer segments** with clearly differentiated purchasing behavior
+
+### KMeans Clustering
+- **Cluster 0**: High recency, low frequency & low spending (~59%)  
+- **Cluster 1**: Low recency, high frequency & high spending (~41%)
+
+These clusters represent **low-value vs high-value customers**, enabling targeted business strategies.
+
+---
+
+## 📊 Visualizations
+- Missing value heatmaps  
+- Sales trends (time, country, product)  
+- RFM distributions (before & after log transformation)  
+- Elbow Method & Silhouette analysis  
+- Final KMeans cluster scatter plots  
+
+All plots are saved in the `output/` directory.
+
+---
+
+## 🛠️ Tools & Technologies
+- Python
+- Pandas, NumPy
+- Scikit-learn
+- Matplotlib, Seaborn
+
+---
 
 ## 📁 Project Structure
 <pre>
@@ -16,20 +99,13 @@ This project applies RFM (Recency, Frequency, Monetary) analysis and KMeans clus
 ├── output/ # Generated visualizations
 </pre>
 
-## 📌 Data Source
-UCI Machine Learning Repository - Online Retail Dataset
 
-## 📈 Results
-Cluster summary statistics provided in the terminal.  
-1. Clustering based on RFM analysis. We had 4 clusters/segments of customers  
-        A Customers: 1188 (27.3%) (less recency but high freq and heacy spendings).  
-        B Customers: 1266 (29.1%) (good recency,frequency and monetary).  
-        C Customers: 947  (21.8%) (high recency, low frequency and low spending).  
-        D Customers: 937  (21.6%) (very high recency but very less frequency and spendings).    
+## 🚀 Future Improvements
+- Try advanced clustering techniques (DBSCAN, Hierarchical Clustering)
+- Include customer lifetime value (CLV)
+- Build a dashboard for interactive exploration
 
-2. Implementation of M.L. Algorithm to cluster the customers  
-        giving optimal no. of clusters = 2  
-        Cluster 0 : high recency rate but low freq and monetary. contains 2585 customers (59.4%)  
-        Cluster 1 : low recency rate but high freq and monetary. conatins 1753 customers (40.6%) 
+---
 
-Visualization Plots are saved in the Output directory.
+## 📬 Contact
+If you have suggestions or feedback, feel free to connect on LinkedIn!
