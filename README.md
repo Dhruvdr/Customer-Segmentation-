@@ -99,7 +99,7 @@ All plots are saved in the `output/` directory.
 
 ## 📁 Project Structure
 <pre>
-├── Customer-Segmentation/ # Dataset location
+├── online-retail.xlsx/   # Dataset 
 ├── main2.py/             # Main Execution Script 
 ├── data.pkl              # pickled cleaned dataframe
 ├── output/               # Generated visualizations
