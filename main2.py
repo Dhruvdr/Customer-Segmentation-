@@ -997,3 +997,24 @@ plt.tight_layout()
 
 # Show the plot and take your screenshot!
 # plt.show()
+
+# Set the style
+sns.set_theme(style="whitegrid")
+plt.figure(figsize=(10, 6))
+
+# Create the distribution plot (Histogram + KDE)
+# We filter for CLV > 0 to focus on active predicted customers
+sns.histplot(final_df[final_df['12_Month_CLV'] > 0]['12_Month_CLV'], 
+             bins=50, kde=True, color='teal')
+
+# Add professional titles
+plt.title('Distribution of Predicted 12-Month CLV', fontsize=16, fontweight='bold', pad=20)
+plt.xlabel('Predicted 12-Month Customer Lifetime Value (£)', fontsize=12)
+plt.ylabel('Number of Customers', fontsize=12)
+
+plt.xlim(0, 10000) 
+
+sns.despine()
+plt.tight_layout()
+
+# plt.show()
