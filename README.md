@@ -1,15 +1,16 @@
-# Customer Segmentation using RFM Analysis & KMeans Clustering
+# Customer Segmentation & Predictive Lifetime Value (CLV) Analysis
 
 ## 📌 Project Overview
-This project performs **customer segmentation** using **RFM (Recency, Frequency, Monetary) analysis** and **KMeans clustering** on an online retail dataset.  
-The goal is to identify distinct customer groups based on purchasing behavior and derive actionable business insights.
+This project performs end-to-end customer analytics on an online retail dataset. It begins with descriptive customer segmentation using RFM (Recency, Frequency, Monetary) analysis and KMeans clustering, and elevates to predictive analytics using Probabilistic Machine Learning (BG/NBD and Gamma-Gamma models) to forecast Customer Lifetime Value (CLV) and predict churn.
+
+The goal is to identify distinct customer groups, predict their future purchasing behavior, and derive highly actionable business and marketing strategies.
 
 ---
 
 ## 📊 Dataset
 - **Source**: UCI Machine Learning Repository  
 - **Name**: Online Retail Dataset  
-- **Description**: Transactional data from an online retail store including invoice details, product information, customer IDs, and purchase amounts.
+- **Description**: Transactional data from a UK-based online retail store including invoice details, product descriptions, customer IDs, and purchase amounts.
 
 ---
 
@@ -25,9 +26,9 @@ The goal is to identify distinct customer groups based on purchasing behavior an
 ---
 
 ### 2. Exploratory Data Analysis (EDA)
-- Identified top-selling products and customers  
+- Identified top-selling products and highest-value customers
 - Analyzed sales trends by country, month, weekday, and time of day  
-- Observed strong seasonality and customer concentration patterns
+- Observed strong seasonality (peaks in November) and customer concentration patterns
 
 ---
 
@@ -37,8 +38,6 @@ The goal is to identify distinct customer groups based on purchasing behavior an
 - **Monetary**: Total amount spent  
 
 Customers were scored using quantiles and grouped into **four loyalty segments (A–D)**.
-
-#### RFM Segments:
 - **A**: Low recency, high frequency & high spending  
 - **B**: Good recency, frequency & monetary value  
 - **C**: High recency, low frequency & low spending  
@@ -46,64 +45,66 @@ Customers were scored using quantiles and grouped into **four loyalty segments (
 
 ---
 
-### 4. KMeans Clustering
+### 4. KMeans Clustering (Unsupervised ML)
 - Applied **log transformation** to handle skewed distributions  
 - Standardized features using `StandardScaler`  
-- Evaluated multiple feature combinations:
-  - Recency & Monetary  
-  - Frequency & Monetary  
-  - Recency, Frequency & Monetary  
+- Evaluated multiple feature combinations using the **Elbow Method (WCSS)** and **Silhouette Score**.
+- Optimal number of clusters: 2
 
-#### Model Selection:
-- Used the **Elbow Method (WCSS)** and **Silhouette Score**
-- Optimal number of clusters: **2**
+### 5. Predictive CLV & Churn Modeling (Probabilistic ML)
+- **Beta-Geometric/Negative Binomial Distribution (BG/NBD)**: Fitted a model to predict the expected number of purchases in the next 30 days and calculate the probability that a customer is still "alive" (churn risk).
+- **Gamma-Gamma Submodel**: Modeled the distribution of average transaction values to predict future spend.
+- **12-Month CLV**: Combined both models to project the exact monetary value each customer will bring to the business over the next year.
 
 ---
 
-## 📈 Results
+## 📈 Results & Business Insights 
 
 ### RFM-Based Segmentation
 - **4 customer segments** with clearly differentiated purchasing behavior
 
 ### KMeans Clustering
-- **Cluster 0**: High recency, low frequency & low spending (~59%)  
-- **Cluster 1**: Low recency, high frequency & high spending (~41%)
+-Cluster 0: High recency, low frequency & low spending (~59% of the base).
+Strategy: Re-engagement and automated win-back campaigns.
+- Cluster 1: Low recency, high frequency & high spending (~41% of the base). 
+Strategy: VIP treatment and lookalike audience acquisition.
 
 These clusters represent **low-value vs high-value customers**, enabling targeted business strategies.
+
+### Predictive Analytics & Churn Risk
+- Successfully projected the **12-Month Expected Revenue** and **30-Day Purchase Pacing** for all returning customers, allowing the business to shift from reactive to proactive marketing.
+- **Actionable Insight**: The model flagged exactly **1 "At-Risk Whale"** (A Tier 'A' loyalty customer whose probability of returning dropped below 50%). This allows the business to immediately deploy a highly targeted retention campaign to save a high-value account.
 
 ---
 
 ## 📊 Visualizations
-- Missing value heatmaps  
-- Sales trends (time, country, product)  
-- RFM distributions (before & after log transformation)  
-- Elbow Method & Silhouette analysis  
-- Final KMeans cluster scatter plots  
+- Missing value heatmaps & sales trends
+- RFM distributions (before & after log transformation)
+- Elbow Method & Silhouette analysis for K-Means validation
+- Final KMeans cluster scatter plots
+- Predicted 12-Month CLV distribution by customer tier
 
 All plots are saved in the `output/` directory.
 
 ---
 
 ## 🛠️ Tools & Technologies
-- Python
-- Pandas, NumPy
-- Scikit-learn
-- Matplotlib, Seaborn
+- **Language**: Python
+- **Data Manipulation**: Pandas, NumPy
+- **Machine Learning**: Scikit-learn (KMeans, StandardScaler)
+- **Predictive CLV**: Lifetimes (BetaGeoFitter, GammaGammaFitter)
+- **Data Visualization**: Matplotlib, Seaborn
 
 ---
 
 ## 📁 Project Structure
 <pre>
 ├── Customer-Segmentation/ # Dataset location
-├── main.py/ # Python scripts
-├── output/ # Generated visualizations
+├── main2.py/             # Main Execution Script 
+├── data.pkl              # pickled cleaned dataframe
+├── output/               # Generated visualizations
+└── README.md             # Project documentation
 </pre>
-
-
-## 🚀 Future Improvements
-- Try advanced clustering techniques (DBSCAN, Hierarchical Clustering)
-- Include customer lifetime value (CLV)
-- Build a dashboard for interactive exploration
 
 ---
 
