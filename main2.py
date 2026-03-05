@@ -936,3 +936,64 @@ print(f"Send these specific customers a highly targeted discount campaign immedi
 
 # exporting the final dataframe for further analysis and reporting 
 # final_df.to_csv('Customer_Segmentation_with_CLV.csv') 
+
+# Top 3 Healthy VIPs (High CLV, High Probability)
+healthy_vips = final_df[final_df['Loyalty'] == 'A'].sort_values('12_Month_CLV', ascending=False).head(5)
+# "At-Risk Whale" (Tier A, Probability < 0.5)
+at_risk_whale = final_df[(final_df['Loyalty'] == 'A') & (final_df['probability_alive'] < 0.5)]
+# 3. Combine
+showcase_df = pd.concat([healthy_vips, at_risk_whale])
+# 4. Select only the "Business" columns and save to CSV for Excel
+cols_to_show = ['Frequency', 'Monetary','Loyalty', 'probability_alive', '12_Month_CLV']
+# showcase_df[cols_to_show].to_csv('Predictive_VIP_Analysis.csv')
+
+# print("Showcase file created! It now includes your At-Risk Whale at the bottom.")
+
+
+# # most impactful columns 
+# display_cols = ['Frequency', 'Monetary', 'Loyalty', 'probability_alive', '12_Month_CLV']
+# # At-Risk Whale AND a few of healthiest top-tier customers for contrast
+# showcase_table = final_df[final_df['Loyalty'] == 'A'].sort_values('probability_alive').head(5)[display_cols]
+
+# # Data formating like a professional business report
+# styled_table = showcase_table.style.format({
+#     'Monetary': '£{:,.2f}',
+#     '12_Month_CLV': '£{:,.2f}',
+#     'probability_alive': '{:.1%}' # Converts 0.45 to 45.0%
+# }).set_caption("VIP Churn Risk Analysis (Top 5)")
+
+# # Display this in a Jupyter Notebook cell and take a screenshot!
+# styled_table
+
+# average expected future revenue for each loyalty tier
+clv_by_tier = final_df.groupby('Loyalty')['12_Month_CLV'].mean().reset_index()
+# visual style
+sns.set_theme(style="whitegrid")
+plt.figure(figsize=(10, 6))
+ax = sns.barplot(
+    x='Loyalty', 
+    y='12_Month_CLV', 
+    data=clv_by_tier, 
+    palette='magma', 
+    order=['A', 'B', 'C', 'D']
+)
+
+# Add clear, professional titles and labels
+plt.title('Predicted Average 12-Month CLV by Loyalty Tier', fontsize=16, fontweight='bold', pad=20)
+plt.xlabel('Historical RFM Segment', fontsize=12, labelpad=10)
+plt.ylabel('Expected Future Revenue (£)', fontsize=12, labelpad=10)
+
+# actual money values on top of each bar for instant readability
+for p in ax.patches:
+    ax.annotate(f'£{p.get_height():,.0f}', 
+                (p.get_x() + p.get_width() / 2., p.get_height()), 
+                ha='center', va='bottom', 
+                fontsize=12, fontweight='bold', color='black', 
+                xytext=(0, 5), textcoords='offset points')
+
+# Remove the top and right borders for a cleaner look
+sns.despine()
+plt.tight_layout()
+
+# Show the plot and take your screenshot!
+# plt.show()
