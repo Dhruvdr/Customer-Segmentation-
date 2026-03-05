@@ -64,7 +64,7 @@ Customers were scored using quantiles and grouped into **four loyalty segments (
 - **4 customer segments** with clearly differentiated purchasing behavior
 
 ### KMeans Clustering
--Cluster 0: High recency, low frequency & low spending (~59% of the base).
+- Cluster 0: High recency, low frequency & low spending (~59% of the base).
 Strategy: Re-engagement and automated win-back campaigns.
 - Cluster 1: Low recency, high frequency & high spending (~41% of the base). 
 Strategy: VIP treatment and lookalike audience acquisition.
